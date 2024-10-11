@@ -1,27 +1,51 @@
 <template>
-  <div class="chart-container"></div>
+  <div class="hello"></div>
 </template>
 
 <script setup lang="ts">
 import { defineComponent } from "vue";
-import ApexCharts from "apexcharts";
 const options = {
-  chart: {
-    type: "line",
-  },
   series: [
     {
-      name: "sales",
-      data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
+      name: "STOCK ABC",
+      data: series.monthDataSeries1.prices,
     },
   ],
+  chart: {
+    type: "area",
+    height: 350,
+    zoom: {
+      enabled: false,
+    },
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    curve: "straight",
+  },
+
+  title: {
+    text: "Fundamental Analysis of Stocks",
+    align: "left",
+  },
+  subtitle: {
+    text: "Price Movements",
+    align: "left",
+  },
+  labels: series.monthDataSeries1.dates,
   xaxis: {
-    categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+    type: "datetime",
+  },
+  yaxis: {
+    opposite: true,
+  },
+  legend: {
+    horizontalAlign: "left",
   },
 };
 
 var chart = new ApexCharts(document.querySelector("#chart"), options);
-
 chart.render();
 </script>
 
