@@ -1,14 +1,17 @@
 <template>
-  <div class="hello"></div>
+  <div class="hello"><div class="chart" /></div>
 </template>
 
 <script setup lang="ts">
 import { defineComponent } from "vue";
+import ApexCharts from "apexcharts";
+import jsondata from "../assets/generateddata.json";
+
 const options = {
   series: [
     {
       name: "STOCK ABC",
-      data: series.monthDataSeries1.prices,
+      data: jsondata,
     },
   ],
   chart: {
@@ -33,7 +36,6 @@ const options = {
     text: "Price Movements",
     align: "left",
   },
-  labels: series.monthDataSeries1.dates,
   xaxis: {
     type: "datetime",
   },
